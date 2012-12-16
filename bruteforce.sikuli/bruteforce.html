@@ -1,0 +1,99 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }  
+         
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>bruteforce.sikuli</h2> <a href="bruteforce.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">import</span> time
+enter_your_pin = Pattern(<img src="enter_your_pin.png" />).similar(<span class="dig">0.26</span>)
+
+images = [Pattern(<img src="0.png" />).similar(<span class="dig">0.59</span>),<img src="1.png" />,<img src="2.png" />,Pattern(<img src="3.png" />).similar(<span class="dig">0.63</span>),<img src="4.png" />,Pattern(<img src="5.png" />).similar(<span class="dig">0.59</span>),<img src="6.png" />,<img src="7.png" />,<img src="8.png" />,<img src="9.png" />]
+
+<span class="skw">click</span>(enter_your_pin)
+
+<span class="kw">for</span> index1, first <span class="kw">in</span> enumerate(images):
+    <span class="kw">for</span> index2, second <span class="kw">in</span> enumerate(images):
+        <span class="kw">for</span> index3, third <span class="kw">in</span> enumerate(images):
+            <span class="kw">for</span> index4, fourth <span class="kw">in</span> enumerate(images):
+                <span class="skw">click</span>(first)
+                time.<span class="skw">sleep</span>(<span class="dig">1</span>)
+                <span class="skw">click</span>(second)
+                time.<span class="skw">sleep</span>(<span class="dig">1</span>)
+                <span class="skw">click</span>(third)
+                time.<span class="skw">sleep</span>(<span class="dig">1</span>)
+                <span class="skw">click</span>(fourth)
+                time.<span class="skw">sleep</span>(<span class="dig">1</span>)
+                <span class="kw">if</span> (exists(enter_your_pin)):
+                    <span class="kw">print</span>(<span class="str">"WRONG PASSWORD: "</span> + str(index1) + str(index2) + str(index3) + str(index4))
+                <span class="kw">else</span>:
+                    <span class="kw">print</span>(<span class="str">"FOUND PASSWORD: "</span> + str(index1) + str(index2) + str(index3) + str(index4))
+                    exit(<span class="dig">0</span>)
+</pre>
+</body>
+</html>
